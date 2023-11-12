@@ -1,4 +1,4 @@
-name: Publish
+name: Publish 🚀
 
 on:
   workflow_dispatch:
@@ -9,20 +9,20 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-
+    
     steps:
       - uses: actions/checkout@v3
-
+      
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0.x'
-
+          
       - name: Restore
-        run: dotnet restore ./MN_Azure.sln
-
+        run: dotnet restore ./MN_Azure/MN_Azure.sln
+        
       - name: Build
         run: dotnet build ./MN_Azure/MN_Azure.sln --configuration Release --no-restore
-
+        
       - name: Publish
-        run: dotnet publish ./MN_Azure/MN_Azure.sln --configuration Release --no-restore
+        run: dotnet publish ./MN_Azure/MN_Azure.sln --configuration Release --no-build
