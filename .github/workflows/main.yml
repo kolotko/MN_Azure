@@ -5,8 +5,9 @@ on:
   push:
     branches:
     - main
+
 env:
-  AZURE_WEBAPP_NAME: MN_Azure
+  AZURE_WEBAPP_NAME: MN-Azure
   AZURE_WEBAPP_PACKAGE_PATH: "./publish"
 
 jobs:
@@ -19,17 +20,17 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x'
+          dotnet-version: '6.0.x'
           
       - name: Restore
-        run: dotnet restore ./MN_Azure/MN_Azure.sln
+        run: dotnet restore .//MN_Azure/MN_Azure.sln
         
       - name: Build
         run: dotnet build ./MN_Azure/MN_Azure.sln --configuration Release --no-restore
         
       - name: Publish
-        run: dotnet publish ./MN_Azure/MN_Azure.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
-
+        run: dotnet publish .//MN_Azure/MN_Azure.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+        
       - name: Deployment
         uses: azure/webapps-deploy@v2
         with:
