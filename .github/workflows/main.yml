@@ -22,7 +22,7 @@ jobs:
         run: dotnet restore ./MN_Azure.sln
 
       - name: Build
-        run: dotnet build ./MN_Azure.sln --configuration Release --no-restore
+        run: dotnet build ./MN_Azure/MN_Azure.sln --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish ./MN_Azure.sln --configuration Release --no-restore
+        run: dotnet publish ./MN_Azure/MN_Azure.sln --configuration Release --no-restore
