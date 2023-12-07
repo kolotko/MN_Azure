@@ -2,6 +2,11 @@
 
 public class Blobinfo
 {
-    public string Content { get; set; }
-    public string ContentTypre { get; set; }
+    public Stream Content { get; set; }
+    public string ContentType { get; set; }
+    public Blobinfo(Stream content, string contentType)
+    {
+        Content = content;
+        ContentType = contentType;
+    }
 }
